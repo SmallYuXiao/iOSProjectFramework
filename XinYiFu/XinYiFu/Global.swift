@@ -128,7 +128,7 @@ extension UICollectionView {
 }
 //MARK: swizzledMethod
 extension NSObject {
-    
+
     static func swizzleMethod(_ cls: AnyClass, originalSelector: Selector, swizzleSelector: Selector){
         
         let originalMethod = class_getInstanceMethod(cls, originalSelector)!
