@@ -9,10 +9,13 @@
 import UIKit
 
 class NewBaseViewController: UBaseViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.red
+        self.view.backgroundColor = UIColor.white
+    }
+    override func configUI() {
+          
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

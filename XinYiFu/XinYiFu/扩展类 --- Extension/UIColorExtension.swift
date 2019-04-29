@@ -84,6 +84,43 @@ extension UIColor {
         
         return UIColor(r: r, g: g, b: b)
     }
+    
+    public class func hexStringToColor(hexString: String, alpha: CGFloat) -> UIColor {
+        
+        var cString: String = hexString.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        
+        if cString.characters.count < 6 {
+            return UIColor.black
+        }
+        if cString.hasPrefix("0X") {
+            cString = cString.substring(from: cString.index(cString.startIndex, offsetBy: 2))
+        }
+        if cString.hasPrefix("#") {
+            cString = cString.substring(from: cString.index(cString.startIndex, offsetBy: 1))
+        }
+        if cString.characters.count != 6 {
+            return UIColor.black
+        }
+        
+        var range: NSRange = NSMakeRange(0, 2)
+        let rString = (cString as NSString).substring(with: range)
+        range.location = 2
+        let gString = (cString as NSString).substring(with: range)
+        range.location = 4
+        let bString = (cString as NSString).substring(with: range)
+        
+        var r: UInt32 = 0x0
+        var g: UInt32 = 0x0
+        var b: UInt32 = 0x0
+        Scanner.init(string: rString).scanHexInt32(&r)
+        Scanner.init(string: gString).scanHexInt32(&g)
+        Scanner.init(string: bString).scanHexInt32(&b)
+        if #available(iOS 10.0, *) {
+            return UIColor(displayP3Red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: alpha)
+        } else {
+            return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: alpha)
+        }
+    }
     open class var dark: UIColor { get { return UIColor.rgb(51, 51, 51) } }
     
     open class var lightGray: UIColor { get { return UIColor.rgb(102, 102, 102) } }

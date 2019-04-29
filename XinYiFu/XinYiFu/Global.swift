@@ -41,6 +41,7 @@ let screenHeight = UIScreen.main.bounds.height
 let Window = UIApplication.shared.windows.first
 // 状态栏高度
 let kStatuHeight : CGFloat = 20
+let k_race:CGFloat = screenWidth / 375.0
 // 导航栏高度
 // 判断是否为 iPhone X
 let isIphoneX = screenHeight >= 812 ? true : false

@@ -1,6 +1,0 @@
-framework module ZLaunchAd {
-  umbrella header "ZLaunchAd-umbrella.h"
-
-  export *
-  module * { export * }
-}
